@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SearchBox = ({ handleSearch }) => {
   return (
     <div className='pa2'>

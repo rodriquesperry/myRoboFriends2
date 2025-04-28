@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchBox from '../components/search_box/SearchBox';
 import CardList from '../components/card_list/CardList';
-// import { robots } from './robots';
 import axios from 'axios';
 
 import styles from './App.module.css';

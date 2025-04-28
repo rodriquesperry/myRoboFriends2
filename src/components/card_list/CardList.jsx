@@ -1,7 +1,6 @@
-import React from 'react';
 import Card from '../card/Card';
 
-const CardList = ({ data, searchTerm }) => {
+const CardList = ({ data }) => {
 	return (
 		<>
 			{data.map((robot) => (
