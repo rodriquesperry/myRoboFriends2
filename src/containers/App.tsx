@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import styles from './App.module.css';
 
+
+
 function App() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [items, setItems] = useState([]);
@@ -21,6 +23,7 @@ function App() {
 	}, []);
 
 	const handleSearch = (e) => {
+    if (!e.target.value) return;
 		setSearchTerm(e.target.value);
 	};
 
