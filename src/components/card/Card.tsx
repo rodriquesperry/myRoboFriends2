@@ -1,4 +1,11 @@
-const Card = ({ email, name, id }) => {
+import { Robot } from '../../containers/App';
+
+type CardProps = {
+	robot: Robot,
+};
+
+const Card = ({ robot }: CardProps) => {
+  const { email, name, id } = robot;
 	return (
 		<div className='bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
 			<img src={`https://robohash.org/${id}?100x100`} alt='robots' />

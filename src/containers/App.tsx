@@ -1,33 +1,35 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import SearchBox from '../components/search_box/SearchBox';
 import CardList from '../components/card_list/CardList';
-import axios from 'axios';
+import { getData } from '../utils/data.utils'
 
 import styles from './App.module.css';
 
+export type Robot = {
+  id: string;
+  name: string;
+  email: string;
+}
 
 
 function App() {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [items, setItems] = useState([]);
+	const [robots, setRobots] = useState<Robot[]>([]);
 
 	useEffect(() => {
-		const getData = async () => {
-			await axios
-				.get('https://jsonplaceholder.typicode.com/users')
-				.then((response) => {
-					setItems(response.data);
-				});
-		};
-		getData();
+    const fetchUserData = async () => {
+      const users = await getData<Robot[]>('https://jsonplaceholder.typicode.com/users');
+      setRobots(users)
+    }
+    fetchUserData();
 	}, []);
 
-	const handleSearch = (e) => {
-    if (!e.target.value) return;
+	const handleSearch = (e: ChangeEvent<HTMLInputElement>): void => {    
 		setSearchTerm(e.target.value);
 	};
 
-	const filteredItems = items.filter((item) =>
+
+	const filteredRobots = robots.filter((item) =>
 		item.name.toLowerCase().includes(searchTerm.toLowerCase())
 	);
 
@@ -39,7 +41,7 @@ function App() {
 			</header>
 			<main className={styles.main_container}>
 				<div className={styles.class_list}>
-					<CardList data={filteredItems} searchTerm={searchTerm} />
+					<CardList robots={filteredRobots} />
 				</div>
 			</main>
 		</>

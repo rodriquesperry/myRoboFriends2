@@ -10,7 +10,7 @@ type SearchBoxProps = {
 const SearchBox = ({ handleSearch }: SearchBoxProps) => {
   return (
     <div className='pa2'>
-      <input type='search' className='pa3 ba--green bg-lightstblue' onChange={(e) => handleSearch} placeholder='search MyRoboFriends...' />
+      <input type='search' className='pa3 ba--green bg-lightstblue' onChange={handleSearch} placeholder='search MyRoboFriends...' />
     </div>
   )
 }
